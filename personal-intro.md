@@ -44,8 +44,7 @@
 ### 设计能力
 
 - UI / UX 设计——强调极简主义与产品感
-- Design System 设计系统——追求视觉统一与可复用性
-- 动效编排——Cavalry 动画制作、AI 视频生成、首尾帧动画
+- 动效制作——Cavalry 动画制作、AI 视频生成、首尾帧动画
 - 产品展示页设计——注重信息层级与视觉节奏
 
 ### AI 工具链
@@ -117,5 +116,13 @@ VEX 相关工具型应用（开发中）
 
 - AI Agent 与本地化 AI 工作流
 - Web Automation 与多设备协同
-- Motion Design 与动画产品化
 - AI × Robotics 的教育科技方向
+
+---
+
+## 社交链接
+
+| 平台 | 链接 |
+|---|---|
+| 小红书 | [xhslink.com/m/9ti6e6vyizX](https://xhslink.com/m/9ti6e6vyizX) |
+| GitHub | [github.com/flashzdw](https://github.com/flashzdw) |
