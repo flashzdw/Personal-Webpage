@@ -57,11 +57,39 @@
 
 ## 项目作品
 
-### BricksWorkshop-Web
+### [Numbers-In-Pi](https://github.com/flashzdw/Numbers-In-Pi)
+
+在圆周率中查找任意数字，并搭配精美纪念图片的趣味网站。
+
+**技术特点**
+
+- React + Vite 前端，Cloudflare Workers 后端
+- 自研索引算法实现快速数字检索
+- GitHub Releases 管理静态数据文件
+- 浏览器自动化测试保障部署质量
+
+**项目亮点**：用算法解决趣味问题，将数学探索与视觉表达结合。
+
+---
+
+### [HTML-Shower](https://github.com/flashzdw/HTML-Shower)
+
+手机端纯前端 HTML 实时预览工具。
+
+**技术特点**
+
+- 支持 PWA——可添加到主屏幕、离线使用
+- 纯前端实现，不上传用户代码，保护隐私
+- Playwright 自动化测试覆盖
+- GitHub Actions 持续部署
+
+**项目亮点**：解决移动端调试 HTML 的痛点，专注工具化体验。
+
+---
+
+### [BricksWorkshop-Web](https://www.vexiq8009.website) · [源码](https://github.com/flashzdw/BricksWorkshop-Web)
 
 VEX 教育机构展示型官网
-
-**项目地址**：[vexiq8009.website](https://www.vexiq8009.website)
 
 **项目特点**
 
@@ -75,11 +103,11 @@ VEX 教育机构展示型官网
 
 ---
 
-### VEXHelper
+### [VEXHelper](https://github.com/flashzdw/VEXHelper) · [App Store](https://apps.apple.com/cn/app/vex-helper/id6751159706?l=en-GB)
 
 VEX 相关工具型应用（开发中）
 
-**项目方向**：面向 VEX 用户，强调效率与工具化，计划 App Store 上线，探索 AI + Robotics 结合方向。
+**项目方向**：面向 VEX 用户，强调效率与工具化，探索 AI + Robotics 结合方向。
 
 **技术特点**：AI 辅助开发、产品化思维、多端适配、现代 UI 风格。
 
