@@ -1,13 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Nothing Design personal website initialized.');
+    console.log('SYS.OP. NORMAL - Nothing Design System Initialized.');
 
-    const revealElements = document.querySelectorAll(
-        '.hero-title, .hero-subtitle, .about-text, .section-header, .project-card, .skill-group, .site-footer'
-    );
+    /* ==========================================================================
+       Theme Toggle (Dark / Light)
+       ========================================================================== */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
 
-    revealElements.forEach((el) => {
-        el.classList.add('mechanical-reveal');
+    // Check for saved theme or system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.remove('theme-dark', 'theme-light');
+        body.classList.add(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('theme-dark')) {
+            body.classList.remove('theme-dark');
+            body.classList.add('theme-light');
+            localStorage.setItem('theme', 'theme-light');
+        } else {
+            body.classList.remove('theme-light');
+            body.classList.add('theme-dark');
+            localStorage.setItem('theme', 'theme-dark');
+        }
     });
+
+    /* ==========================================================================
+       Language Toggle (ZH / EN)
+       ========================================================================== */
+    const langToggleBtn = document.getElementById('lang-toggle');
+    
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+        body.classList.remove('lang-zh', 'lang-en');
+        body.classList.add(savedLang);
+    } else {
+        // Default is ZH as set in HTML
+        body.classList.add('lang-zh');
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('lang-zh')) {
+            body.classList.remove('lang-zh');
+            body.classList.add('lang-en');
+            localStorage.setItem('lang', 'lang-en');
+            document.documentElement.lang = 'en';
+        } else {
+            body.classList.remove('lang-en');
+            body.classList.add('lang-zh');
+            localStorage.setItem('lang', 'lang-zh');
+            document.documentElement.lang = 'zh-CN';
+        }
+    });
+
+    /* ==========================================================================
+       Progress Bar Width Setup
+       ========================================================================== */
+    const progressFills = document.querySelectorAll('.progress-fill');
+    progressFills.forEach(fill => {
+        const width = fill.getAttribute('data-width');
+        if (width) {
+            fill.style.width = width;
+        }
+    });
+
+    /* ==========================================================================
+       Mechanical Reveal Animation (Intersection Observer)
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.mechanical-reveal');
 
     let staggerTimeout = null;
     let visibleQueue = [];

@@ -3,10 +3,23 @@
    ========================================================================== */
 
 :root {
-    /* Colors - OLED Dark Mode */
-    --color-background: #000000;
-    --color-text-primary: rgba(255, 255, 255, 0.9);
-    --color-text-secondary: rgba(255, 255, 255, 0.6);
+    /* OLED Dark Mode (Default) */
+    --color-background-dark: #000000;
+    --color-text-primary-dark: rgba(255, 255, 255, 0.9);
+    --color-text-secondary-dark: rgba(255, 255, 255, 0.6);
+    --color-border-dark: rgba(255, 255, 255, 0.1);
+    --color-border-hover-dark: rgba(255, 255, 255, 0.9);
+    --color-bg-hover-dark: rgba(255, 255, 255, 0.04);
+
+    /* Warm Off-White Light Mode */
+    --color-background-light: #f5f3f0;
+    --color-text-primary-light: rgba(0, 0, 0, 0.9);
+    --color-text-secondary-light: rgba(0, 0, 0, 0.6);
+    --color-border-light: rgba(0, 0, 0, 0.1);
+    --color-border-hover-light: rgba(0, 0, 0, 0.9);
+    --color-bg-hover-light: rgba(0, 0, 0, 0.04);
+
+    /* Red Accent */
     --color-accent: #D71921;
 
     /* Typography */
@@ -15,9 +28,8 @@
     --font-display: 'Doto', sans-serif;
 
     /* Font Sizes */
-    --text-display: 64px;
     --text-h1: 48px;
-    --text-h2: 32px;
+    --text-h2: 24px;
     --text-body: 16px;
     --text-caption: 12px;
 
@@ -28,7 +40,29 @@
     --space-32: 32px;
     --space-64: 64px;
     --space-96: 96px;
+
+    /* Default Theme Variables (Dark) */
+    --color-background: var(--color-background-dark);
+    --color-text-primary: var(--color-text-primary-dark);
+    --color-text-secondary: var(--color-text-secondary-dark);
+    --color-border: var(--color-border-dark);
+    --color-border-hover: var(--color-border-hover-dark);
+    --color-bg-hover: var(--color-bg-hover-dark);
 }
+
+/* Light Theme Variables */
+body.theme-light {
+    --color-background: var(--color-background-light);
+    --color-text-primary: var(--color-text-primary-light);
+    --color-text-secondary: var(--color-text-secondary-light);
+    --color-border: var(--color-border-light);
+    --color-border-hover: var(--color-border-hover-light);
+    --color-bg-hover: var(--color-bg-hover-light);
+}
+
+/* Language Display Control */
+body.lang-zh .en { display: none !important; }
+body.lang-en .zh { display: none !important; }
 
 /* ==========================================================================
    Basic Reset
@@ -52,9 +86,9 @@ body {
     font-family: var(--font-primary);
     line-height: 1.5;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
     font-weight: 500;
@@ -71,28 +105,76 @@ ul, ol {
     list-style: none;
 }
 
-button, input, select, textarea {
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
     font-family: inherit;
     color: inherit;
+}
+
+/* ==========================================================================
+   Top Navigation Bar
+   ========================================================================== */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-16) var(--space-32);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-h2);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    gap: var(--space-16);
+}
+
+.nav-btn {
+    font-family: var(--font-secondary);
+    font-size: var(--text-caption);
+    border: 1px solid var(--color-border);
+    padding: var(--space-8) var(--space-16);
+    border-radius: 4px;
+    transition: all 0.15s ease-out;
+    text-transform: uppercase;
+}
+
+.nav-btn:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-bg-hover);
 }
 
 /* ==========================================================================
    Layout Container
    ========================================================================== */
 .layout-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: var(--space-32) var(--space-32) 0;
+    padding: var(--space-32) var(--space-32) var(--space-32);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    gap: var(--space-96);
+    min-height: calc(100vh - 70px);
 }
 
 /* ==========================================================================
-   Task 2: Hero & About Section
+   Hero Section
    ========================================================================== */
 .section-hero {
-    margin-bottom: var(--space-96);
     display: flex;
     flex-direction: column;
     gap: var(--space-64);
@@ -107,13 +189,12 @@ button, input, select, textarea {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(var(--text-h1), 8vw, 96px); /* Huge display size */
+    font-size: clamp(var(--text-h1), 8vw, 96px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.02em;
-    position: relative;
-    display: inline-block;
-    align-self: flex-start;
+    display: flex;
+    align-items: flex-end;
 }
 
 .accent-dot {
@@ -121,8 +202,19 @@ button, input, select, textarea {
     width: clamp(12px, 2vw, 24px);
     height: clamp(12px, 2vw, 24px);
     background-color: var(--color-accent);
-    border-radius: 50%;
+    border-radius: 0; /* Keep it square or round depending on Nothing. Let's make it square for mechanical feel, but 50% was used before. The prompt says 4px max border-radius. So let's use 4px */
+    border-radius: 4px;
     margin-left: var(--space-8);
+    margin-bottom: 8px;
+}
+
+.accent-dot-small {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+    margin-right: var(--space-8);
 }
 
 .hero-subtitle {
@@ -134,7 +226,7 @@ button, input, select, textarea {
 }
 
 .about-container {
-    align-self: flex-end; /* Asymmetrical layout */
+    align-self: flex-end;
     max-width: 600px;
 }
 
@@ -147,18 +239,14 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Task 3: Projects Section
+   Section Headers
    ========================================================================== */
-.section-projects {
-    margin-bottom: var(--space-96);
-}
-
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: var(--space-32);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: var(--space-8);
 }
 
@@ -176,26 +264,58 @@ button, input, select, textarea {
     color: var(--color-text-secondary);
 }
 
+/* ==========================================================================
+   Core Philosophy
+   ========================================================================== */
+.philosophy-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+    max-width: 800px;
+}
+
+.text-block p {
+    font-size: var(--text-body);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.quote-block {
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-16);
+    margin: var(--space-16) 0;
+}
+
+.quote-block p {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-16);
 }
 
 .project-card {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px; /* minimal border-radius */
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
     padding: var(--space-16);
     display: flex;
     flex-direction: column;
     gap: var(--space-16);
-    background-color: transparent; /* No shadows, no gradients */
+    background-color: transparent;
     transition: border-color 0.15s ease-out, background-color 0.15s ease-out, transform 0.15s ease-out;
+    cursor: pointer;
 }
 
 .project-card:hover {
-    border-color: var(--color-text-primary);
-    background-color: rgba(255, 255, 255, 0.04);
+    border-color: var(--color-border-hover);
+    background-color: var(--color-bg-hover);
     transform: translateY(-4px);
 }
 
@@ -225,7 +345,7 @@ button, input, select, textarea {
     font-family: var(--font-primary);
     font-size: var(--text-caption);
     color: var(--color-text-secondary);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .card-footer {
@@ -239,19 +359,44 @@ button, input, select, textarea {
     font-family: var(--font-secondary);
     font-size: 10px;
     color: var(--color-text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-border);
     padding: 2px 6px;
     border-radius: 2px;
     text-transform: uppercase;
 }
 
 /* ==========================================================================
-   Task 4: Skills & Tools Section
+   Two Column Layout (Experience & Traits)
    ========================================================================== */
-.section-skills {
-    margin-bottom: var(--space-96);
+.two-col-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-32);
 }
 
+@media (max-width: 768px) {
+    .two-col-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-64);
+    }
+}
+
+.traits-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}
+
+.traits-list li {
+    display: flex;
+    align-items: center;
+    font-size: var(--text-body);
+    color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Skills & Tools Section
+   ========================================================================== */
 .skills-layout {
     display: flex;
     flex-direction: column;
@@ -275,8 +420,8 @@ button, input, select, textarea {
 
 .progress-bar {
     width: 100%;
-    height: 4px; /* dense layout, simple progress bars */
-    background-color: rgba(255, 255, 255, 0.1);
+    height: 4px;
+    background-color: var(--color-border);
     border-radius: 2px;
     overflow: hidden;
 }
@@ -286,17 +431,17 @@ button, input, select, textarea {
     background-color: var(--color-text-primary);
     transform-origin: left;
     transform: scaleX(0);
-    transition: transform 0.25s ease-out;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /* ==========================================================================
-   Task 5: Mechanical Animations
+   Mechanical Animations
    ========================================================================== */
 
 .mechanical-reveal {
     opacity: 0;
     transform: translateY(16px);
-    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1), transform 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .mechanical-reveal.is-visible {
@@ -316,11 +461,36 @@ button, input, select, textarea {
     display: flex;
     justify-content: space-between;
     padding: var(--space-16) 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border);
     font-family: var(--font-secondary);
     font-size: var(--text-caption);
     color: var(--color-text-secondary);
     text-transform: uppercase;
-    /* Edge-anchored footer */
     margin-top: auto;
+}
+
+.footer-left {
+    display: flex;
+    gap: var(--space-8);
+    align-items: center;
+}
+
+.footer-separator {
+    color: var(--color-border);
+}
+
+.footer-link {
+    transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        flex-direction: column;
+        gap: var(--space-16);
+        align-items: center;
+    }
 }
