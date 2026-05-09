@@ -72,7 +72,7 @@
 
 ---
 
-### [HTML-Shower](https://github.com/flashzdw/HTML-Shower)
+### [HTML-Shower](https://html.novecho.qzz.io) · [源码](https://github.com/flashzdw/HTML-Shower)
 
 手机端纯前端 HTML 实时预览工具。
 
