@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('SYS.OP. NORMAL - Nothing Design System Initialized.');
 
     /* ==========================================================================
+       Live Clock
+       ========================================================================== */
+    const clockElement = document.getElementById('live-clock');
+    function updateClock() {
+        if (!clockElement) return;
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* ==========================================================================
        Theme Toggle (Dark / Light)
        ========================================================================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -56,6 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.lang = 'zh-CN';
         }
     });
+
+    /* ==========================================================================
+       Dot-Matrix Widget Generation
+       ========================================================================== */
+    const dotContainer = document.getElementById('dot-matrix-container');
+    if (dotContainer) {
+        const totalDots = 60; // Adjust as needed to fill the space visually
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'matrix-dot';
+            dotContainer.appendChild(dot);
+        }
+
+        // Randomly animate some dots to create a live system feel
+        const dots = dotContainer.querySelectorAll('.matrix-dot');
+        setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * dots.length);
+            const dot = dots[randomIndex];
+            dot.classList.toggle('active');
+            
+            // Turn it back off shortly
+            setTimeout(() => {
+                dot.classList.remove('active');
+            }, Math.random() * 1500 + 500);
+        }, 300);
+    }
 
     /* ==========================================================================
        Progress Bar Width Setup
