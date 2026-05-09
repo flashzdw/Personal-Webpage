@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing Design Personal Website</title>
+    
+    <!-- Google Fonts: Space Grotesk, Space Mono, Doto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="layout-container">
+        
+        <!-- Task 2: Hero & About -->
+        <header class="section-hero">
+            <div class="hero-top">
+                <h1 class="hero-title">DONGZI<span class="accent-dot"></span></h1>
+                <p class="hero-subtitle">INDEPENDENT DEVELOPER // VEX IQ CAPTAIN</p>
+            </div>
+            
+            <div class="about-container">
+                <p class="about-text">
+                    做真正能被使用的作品。<br>
+                    Focus on the structure, discard the noise. Code is poetry, UI is logic.
+                </p>
+            </div>
+        </header>
+
+        <!-- Task 3: Projects -->
+        <section class="section-projects">
+            <div class="section-header">
+                <h2 class="section-title">PROJECTS</h2>
+                <span class="section-meta">[04]</span>
+            </div>
+            <div class="projects-grid">
+                <!-- Card 1 -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="card-id">ID:01</span>
+                        <h3 class="card-title">Numbers-In-Pi</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Interactive visualization of Pi digits. High performance rendering.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tag">REACT</span>
+                        <span class="tag">CANVAS</span>
+                        <span class="tag">VITE</span>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="card-id">ID:02</span>
+                        <h3 class="card-title">HTML-Shower</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Lightweight HTML previewer. Local environment parsing tool.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">JS</span>
+                        <span class="tag">PARSER</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="card-id">ID:03</span>
+                        <h3 class="card-title">BricksWorkshop-Web</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Web-based LEGO modeling toolkit with WebGL rendering.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tag">THREE.JS</span>
+                        <span class="tag">WEBGL</span>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="card-id">ID:04</span>
+                        <h3 class="card-title">VEXHelper</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Utility application for VEX IQ robotics competitions.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tag">C++</span>
+                        <span class="tag">ROBOTICS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task 4: Skills & Tools -->
+        <section class="section-skills">
+            <div class="section-header">
+                <h2 class="section-title">SKILLS & TOOLS</h2>
+                <span class="section-meta">[SYS_READY]</span>
+            </div>
+            <div class="skills-layout">
+                <div class="skill-group">
+                    <div class="skill-label">
+                        <span>FRONTEND</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">
+                        <span>BACKEND</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">
+                        <span>ROBOTICS / VEX</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">
+                        <span>DESIGN (NOTHING)</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-left">
+                <span>© 2024 DONGZI</span>
+            </div>
+            <div class="footer-right">
+                <span>SYS.OP. NORMAL</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
